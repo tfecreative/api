@@ -1,0 +1,10 @@
+\.pytest_cache/
+\.idea/
+**/__pycache__/
+env/
+\.env
+\.env.*
+\.vscode/
+*.swp
+*.pgsql
+\static/

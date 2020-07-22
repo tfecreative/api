@@ -1,0 +1,26 @@
+version: "3.5"
+
+services:
+  db:
+    container_name: tfe_db
+    image: postgres:10.4
+    hostname: db
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./.env.dev
+  api:
+    hostname: api
+    container_name: tfe_api
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${DOCKER_REGISTRY}/api:${TAG}
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env.dev
